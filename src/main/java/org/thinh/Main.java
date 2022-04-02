@@ -1,4 +1,4 @@
-package sample;
+package org.thinh;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -66,27 +66,27 @@ public class Main extends Application {
         Label numFalseNegLb = new Label("False Negative Files:");
         Label numFilesLb = new Label("Number of Files:");
 
-        TextField accuracyTx = new TextField(spamDetector.getAccuracyRounded());
-        accuracyTx.setEditable(false);
-        accuracyTx.setMaxWidth(150);
-        TextField precisionTx = new TextField(spamDetector.getPrecisionRounded());
-        accuracyTx.setEditable(false);
-        precisionTx.setMaxWidth(150);
-        TextField numTruePosTx = new TextField(spamDetector.getNumTruePosString());
-        numTruePosTx.setEditable(false);
-        numTruePosTx.setMaxWidth(150);
-        TextField numFalsePosTx = new TextField(spamDetector.getNumFalsePosString());
-        numFalsePosTx.setEditable(false);
-        numFalsePosTx.setMaxWidth(150);
-        TextField numTrueNegTx = new TextField(spamDetector.getNumTrueNegString());
-        numTrueNegTx.setEditable(false);
-        numTrueNegTx.setMaxWidth(150);
-        TextField numFalseNegTx = new TextField(spamDetector.getNumFalseNegString());
-        numFalseNegTx.setEditable(false);
-        numFalseNegTx.setMaxWidth(150);
         TextField numFilesTx = new TextField(spamDetector.getNumFilesString());
         numFilesTx.setEditable(false);
-        numFilesTx.setMaxWidth(150);
+        numFilesTx.setMaxWidth(100);
+        TextField accuracyTx = new TextField(spamDetector.getAccuracyRounded());
+        accuracyTx.setEditable(false);
+        accuracyTx.setMaxWidth(100);
+        TextField precisionTx = new TextField(spamDetector.getPrecisionRounded());
+        accuracyTx.setEditable(false);
+        precisionTx.setMaxWidth(100);
+        TextField numTruePosTx = new TextField(spamDetector.getNumTruePosString());
+        numTruePosTx.setEditable(false);
+        numTruePosTx.setMaxWidth(100);
+        TextField numFalsePosTx = new TextField(spamDetector.getNumFalsePosString());
+        numFalsePosTx.setEditable(false);
+        numFalsePosTx.setMaxWidth(100);
+        TextField numTrueNegTx = new TextField(spamDetector.getNumTrueNegString());
+        numTrueNegTx.setEditable(false);
+        numTrueNegTx.setMaxWidth(100);
+        TextField numFalseNegTx = new TextField(spamDetector.getNumFalseNegString());
+        numFalseNegTx.setEditable(false);
+        numFalseNegTx.setMaxWidth(100);
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10,10,10,10));
@@ -94,23 +94,32 @@ public class Main extends Application {
         grid.setVgap(10);
         grid.setHgap(10);
 
-        grid.add(canvas,0,0,4,1);
-        grid.add(table, 0,1,4,1);
-        grid.add(summaryLb,0,2,4,1);
-        grid.add(numTruePosLb,0,3);
-        grid.add(numTruePosTx,1,3);
-        grid.add(numFalsePosLb,2,3);
-        grid.add(numFalsePosTx,3,3);
-        grid.add(numTrueNegLb,0,4);
-        grid.add(numTrueNegTx,1,4);
-        grid.add(numFalseNegLb,2,4);
-        grid.add(numFalseNegTx,3,4);
-        grid.add(accuracyLb,0,5);
-        grid.add(accuracyTx,1,5);
-        grid.add(precisionLb,2,5);
-        grid.add(precisionTx,3,5);
-        grid.add(numFilesLb,0,6);
-        grid.add(numFilesTx,1,6);
+        grid.add(canvas,0,0,5,1);
+        grid.add(table, 0,1,5,1);
+        grid.add(summaryLb,0,2,5,1);
+
+        GridPane innerGrid = new GridPane();
+        innerGrid.setPadding(new Insets(0,10,10,10));
+        innerGrid.setAlignment(Pos.TOP_CENTER);
+        innerGrid.setVgap(10);
+        innerGrid.setHgap(10);
+
+        grid.add(innerGrid,0,4,5,1);
+
+        innerGrid.add(numFilesLb,2,0);
+        innerGrid.add(numFilesTx,3,0);
+        innerGrid.add(numTruePosLb,0,0);
+        innerGrid.add(numTruePosTx,1,0);
+        innerGrid.add(numFalsePosLb,4,0);
+        innerGrid.add(numFalsePosTx,5,0);
+        innerGrid.add(numTrueNegLb,0,1);
+        innerGrid.add(numTrueNegTx,1,1);
+        innerGrid.add(numFalseNegLb,4,1);
+        innerGrid.add(numFalseNegTx,5,1);
+        innerGrid.add(accuracyLb,0,2);
+        innerGrid.add(accuracyTx,1,2);
+        innerGrid.add(precisionLb,4,2);
+        innerGrid.add(precisionTx,5,2);
 
         Scene scene = new Scene(grid,800,650);
         primaryStage.setTitle("Spam Detector");

@@ -4,16 +4,11 @@
 
 **This project is a spam detector based on the Naive Bayes filtering algorithm. The application has two phases, training and testing.**
 
--   When started, the user is asked to input two directories. Within each of these two folders, the spam emails are in a `spam` folder, and the ham emails are in a folder called `ham`.
--   In the training phase, the application goes over all of the emails in the train/ham and train/spam folders and computes two word-frequency maps, trainHamFreq, and trainSpamFreq, based on the `Bag-of-words` model. The map trainHamFreq contains a map of words and the number of files containing that word in the ham folder. The map trainSpamFreq contains a map of words and the number of files containing that word in the spam folder. After that, the application computes one more map, containing the probability of each word that appears in a spam file, using the formula derived from `Bayes' theorem`.
--   In the testing phase, the application examines two more folders: test/ham and test/spam. Each file in both directories will be examined, word by word. The ham and spam probabilities for each word in a file will be used to compute a probability that the file is spam, using the formula from the `Naive Bayes filtering` algorithm.
--   Once training and testing have been completed, the application displays the results in a TableView, including columns for the filename (which is unique), the spam probability of the file, and the actual category (which is already known, based on the folder name). At the bottom of the window, there are some summary stats, including the percentage of correct guesses (accuracy) and the ratio of correct positives (spam) to
-    spam guesses (correct or not) (precision).
-
-## Improvements:
-
--   Model: The application also uses the `Laplace smoothing` technique to avoid the zero probability problem in the Naive Bayes algorithm. As a result, the accuracy and precision ratio of the detector increase. I also examined the case sensitivity of the word in the training and testing phases to get higher accuracy and precision.
--   Interface: Title is added at the top. The TableView has two more columns that display the categorization of the file after testing and the number of words in each file. The summary section also has more stats displayed, such as number of correct spam detected files, the number of incorrect spam-detected files, the number of correct ham-detected files, and the number of incorrect ham-detected files.
+-   Upon launching, the user is prompted to specify two directories. Inside each directory, spam emails are stored in a `spam` subfolder, while non-spam (ham) emails are placed in a `ham` subfolder.
+-   During the training phase, the application processes all emails in the `train/ham` and `train/spam` folders to build two word-frequency maps: `trainHamFreq` and `trainSpamFreq`, following the `Bag-of-Words` model. These maps track how many files in each category contain each word. Additionally, the program calculates a probability map for words appearing in spam emails using the `Naive Bayes theorem`.
+-   In the testing phase, the application analyzes emails from the `test/ham` and `test/spam` folders. It evaluates each file word by word, using the ham and spam word probabilities to determine the likelihood that the file is spam, applying the `Naive Bayes filtering` algorithm.
+-   After completing the training and testing phases, the application presents the results in a TableView. Each row includes the filename, the calculated spam probability, and the actual category (based on its directory). Summary statistics are displayed at the bottom, including the accuracy (percentage of correct predictions) and precision (ratio of correct spam predictions to total spam predictions).
+-   To address the issue of zero probabilities in the `Naive Bayes` algorithm, the application incorporates `Laplace smoothing`. This technique helps improve both the accuracy and precision of the spam detector. Additionally, the application accounts for case sensitivity during the training and testing phases to further enhance prediction performance.
 
 ![ui](ui.PNG)
 

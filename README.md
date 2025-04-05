@@ -1,4 +1,4 @@
-# Spam Emails Detector
+# Spam Email Detector
 
 ## Project Information:
 
